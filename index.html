@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMART HOME ESP01</title>
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/application.min.css">
+    <script src="./js/gauge.min.js"></script>
+    <!-- endinject -->
+
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout  mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button" style="top: -5px;"><i class="material-icons">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32"  height="32"  viewBox="0 0 32 32" fill="white">
+                <title>menu</title>
+                <path d="M29.181 19.070c-1.679-2.908-0.669-6.634 2.255-8.328l-3.145-5.447c-0.898 0.527-1.943 0.829-3.058 0.829-3.361 0-6.085-2.742-6.085-6.125h-6.289c0.008 1.044-0.252 2.103-0.811 3.070-1.679 2.908-5.411 3.897-8.339 2.211l-3.144 5.447c0.905 0.515 1.689 1.268 2.246 2.234 1.676 2.903 0.672 6.623-2.241 8.319l3.145 5.447c0.895-0.522 1.935-0.82 3.044-0.82 3.35 0 6.067 2.725 6.084 6.092h6.289c-0.003-1.034 0.259-2.080 0.811-3.038 1.676-2.903 5.399-3.894 8.325-2.219l3.145-5.447c-0.899-0.515-1.678-1.266-2.232-2.226zM16 22.479c-3.578 0-6.479-2.901-6.479-6.479s2.901-6.479 6.479-6.479c3.578 0 6.479 2.901 6.479 6.479s-2.901 6.479-6.479 6.479z"></path>
+                </svg>
+        </i></div>
+        
+        <div class="mdl-card__supporting-text">
+            
+            <div id="Titulo" class="text-color" style="text-align: center; width: calc(100% - 32px);font-family: Roboto,sans-serif; font-size: calc(100% + 1.5vw);font-weight: 600;color: rgb(0, 188, 212);">SMART HOME ESP01</div>
+        </div>
+        <span id="HoraLocal" class="text-color" style="position: absolute; right: 10px; top: 20px; font-family: Roboto,sans-serif; font-size: calc(100% + 0.5vw);font-weight: 300;color: rgb(0, 188, 212);">...</span>
+
+    </header>
+    <div class="mdl-layout__drawer">
+        <header>Opciones</header>
+        <div class="scroll__wrapper" id="scroll__wrapper">
+            <div class="scroller" id="scroller">
+                <div class="scroll__container" id="scroll__container">
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link mdl-navigation__link--current" href="index.html">
+                            <i class="material-icons" role="presentation">Inicio</i>
+                        </a>
+                    
+                        <a class="mdl-navigation__link"  href="Configuracion.html">
+                            <i class="material-icons">Configuración</i>
+                            
+                        </a>
+                        <a class="mdl-navigation__link" href="Info.html">
+                            <i class="material-icons" role="presentation">Info</i>     
+                        </a>
+                        <div class="mdl-layout-spacer"></div>
+                    </nav>
+                </div>
+            </div>
+            <div class='scroller__bar' id="scroller__bar"></div>
+        </div>
+    </div>
+
+    <main class="mdl-layout__content">
+        <div class="mdl-grid ui-components">
+            <!--Toggles-->
+            <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Interruptores</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <span class="text-color--gray">LUCES</span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect switch--colored-green" for="switch-1">
+                                    <input type="checkbox" id="switch-1" data-id="1" class="mdl-switch__input" 
+                                     onchange="sendGPIO(this.dataset.id, this.checked)"/>
+                                    <span class="mdl-switch__label">Sala</span>
+                                </label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect switch--colored-orange" for="switch-2">
+                                    <input type="checkbox" id="switch-2" data-id="2" class="mdl-switch__input">
+                                    <span class="mdl-switch__label">Cocina</span>
+                                </label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect switch--colored-purple" for="switch-3">
+                                    <input type="checkbox" id="switch-3" class="mdl-switch__input" >
+                                    <span class="mdl-switch__label">Baño</span>
+                                </label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect switch--colored-red" for="switch-4">
+                                    <input type="checkbox" id="switch-4" class="mdl-switch__input">
+                                    <span class="mdl-switch__label">Cuarto</span>
+                                </label>
+                            </li>
+                        </ul>
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <span class="text-color--gray">AUTO APAGADO</span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect checkbox--colored-green" for="1">
+                                    <input type="checkbox" id="1" class="mdl-checkbox__input" 
+                                    onchange="activateSPB(this.id, this.checked)"/> 
+                                    <span class="mdl-checkbox__label" style="font-family: Roboto,Helvetica,Arial,sans-serif; font-size: 16px;font-weight: 300;color: #fff;">Sala</span>
+ 
+                                </label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect checkbox--colored-orange" for="2">
+                                    <input type="checkbox" id="2" class="mdl-checkbox__input" 
+                                    onchange="activateSPB(this.id, this.checked)"/>
+                                    <span class="mdl-checkbox__label" style="font-family: Roboto,Helvetica,Arial,sans-serif; font-size: 16px;font-weight: 300;color: #fff;">Cocina</span>
+                                </label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect checkbox--colored-purple" for="3">
+                                    <input type="checkbox" id="3" class="mdl-checkbox__input" 
+                                    onchange="activateSPB(this.id, this.checked)"/>
+                                    <span class="mdl-checkbox__label" style="font-family: Roboto,Helvetica,Arial,sans-serif; font-size: 16px;font-weight: 300;color: #fff;">Baño</span>
+                                </label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect checkbox--colored-red" for="4">
+                                    <input type="checkbox" id="4" class="mdl-checkbox__input" 
+                                    onchange="activateSPB(this.id, this.checked)"/>
+                                    <span class="mdl-checkbox__label" style="font-family: Roboto,Helvetica,Arial,sans-serif; font-size: 16px;font-weight: 300;color: #fff;">Cuarto</span>
+                                </label>
+                            </li>
+                        </ul>
+
+                        <ul class="mdl-list pull-left" id="sliders" style="display: none;">
+                            <li class="mdl-list__item">
+                                <span class="text-color--gray">TIEMPO DE APAGADO (MINUTOS)</span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <input class="mdl-slider mdl-js-slider slider--colored-green" id="slider-1" data-id="1" style="width: 250px;" type="range" min="0" max="10" value="0" tabindex="10" disabled
+                                onchange="sendPWM(this.dataset.id, this.value);">
+                                <label id="slider-text-1" data-id="1" disabled>0</label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <input class="mdl-slider mdl-js-slider slider--colored-orange" id="slider-2" data-id="2" style="width: 250px;" type="range" min="0" max="10" value="0" disabled
+                                onchange="sendPWM(this.dataset.id, this.value);">
+                                <label id="slider-text-2" data-id="2" disabled>0</label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <input class="mdl-slider mdl-js-slider slider--colored-purple" id="slider-3" data-id="3" style="width: 250px;" type="range" min="0" max="10" value="0" disabled
+                                onchange="sendPWM(this.dataset.id, this.value);">
+                                <label id="slider-text-3" data-id="3" disabled>0</label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <input class="mdl-slider mdl-js-slider slider--colored-red" id="slider-4" data-id="4" style="width: 250px;" type="range" min="0" max="10" value="0" disabled
+                                onchange="sendPWM(this.dataset.id, this.value);">
+                                <label id="slider-text-4" data-id="4" disabled>0</label>
+                            </li>
+                        </ul>
+
+                        <ul class="mdl-list pull-left" id="progress" style="display: none;">
+                            <li class="mdl-list__item">
+                                <span class="text-color--gray">TIEMPO TRANSCURRIDO</span>
+                            </li>
+
+                            <li class="mdl-list__item" >
+                                <div id="p1" class="mdl-progress mdl-js-progress progress--colored-red" style="width: 250px;"></div>
+                                <div id="p1tool" class="mdl-tooltip" for="p1">0</div>
+                            </li>
+                            <li class="mdl-list__item">
+                                <div id="p2" class="mdl-progress mdl-js-progress progress--colored-orange"  style="width: 250px;"></div>
+                                <script>
+                                    document.querySelector('#p2').addEventListener('mdl-componentupgraded', function() {
+                                        this.MaterialProgress.setProgress(100);
+                                    });
+                                </script>
+                            </li>
+                            <li class="mdl-list__item">
+                                <div id="p3" class="mdl-progress mdl-js-progress progress--colored-light-blue"  style="width: 250px;"></div>
+                                <script>
+                                    document.querySelector('#p3').addEventListener('mdl-componentupgraded', function() {
+                                        this.MaterialProgress.setProgress(100);
+                                    });
+                                </script>
+                            </li>
+                            <li class="mdl-list__item">
+                                <div id="p4" class="mdl-progress mdl-js-progress progress--colored-light-red"  style="width: 250px;"></div>
+                                <script>
+                                    document.querySelector('#p4').addEventListener('mdl-componentupgraded', function() {
+                                        this.MaterialProgress.setProgress(100);
+                                    });
+                                </script>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mdl-cell  mdl-cell--5-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone" >
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Variables Ambientales</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        
+                        <ul class="mdl-list pull-left" >
+                            <li class="mdl-list__item">
+                                <canvas id="Temp"
+                                    data-type="radial-gauge"
+                                    data-value="0"
+                                    data-value-int="0"
+                                    data-value-dec="0"
+                                    data-major-ticks="0, 10, 20, 30, 40, 50"
+                                    data-min-value="0"
+                                    data-max-value="50"
+                                    data-highlights='[
+                                    {"from": 0, "to": 10, "color": "rgba(0,0, 255, .5)"},
+                                    {"from": 10, "to": 25, "color": "rgba(9, 255, 0, .5)"},
+                                    {"from": 25, "to": 50, "color": "rgba(255, 0, 0, .5)"}
+                                     ]'
+                                    data-title="Temperatura"
+                                    data-units="°C"
+                                    data-width="250"
+                                    data-height="250"
+                                    data-bar-width="5"
+                                    data-bar-shadow="5"
+                                    data-color-bar-progress="rgba(50,200,50,.75)"
+                                    data-animation-rule="bounce"
+                                    data-animation-duration="500"
+                                    ></canvas>
+                            </li>
+                        </ul>
+                        <ul class="mdl-list pull-left" >
+                            <li class="mdl-list__item">
+                                <canvas id="Hum"
+                                    data-type="radial-gauge"
+                                    data-value="0"
+                                    data-value-int="0"
+                                    data-value-dec="0"
+                                    data-major-ticks="0, 10, 20, 30, 40, 50,60,70,80,90,100"
+                                    data-min-value="0"
+                                    data-max-value="100"
+                                    data-highlights='[
+                                    {"from": 0, "to": 40, "color": "rgba(0,0, 255, .5)"},
+                                    {"from": 40, "to": 70, "color": "rgba(9, 255, 0, .5)"},
+                                    {"from": 70, "to": 100, "color": "rgba(255, 0, 0, .5)"}
+                                     ]'
+                                    data-title="Humedad"
+                                    data-units="%"
+                                    data-width="250"
+                                    data-height="250"
+                                    data-bar-width="5"
+                                    data-bar-shadow="5"
+                                    data-color-bar-progress="rgba(50,200,50,.75)"
+                                    data-animation-rule="bounce"
+                                    data-animation-duration="500"
+                                    ></canvas>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+</div>
+
+<!-- inject:js -->
+<script src="./js/main.js"></script>
+<script src="./js/Hora.js"></script>
+<script src="js/material.min.js"></script>
+<script src="./js/scroll.min.js"></script>
+
+<!-- endinject -->
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMART HOME ESP01</title>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/application.min.css">
+    <!-- endinject -->
+
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout  mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button" style="top: -5px;"><i class="material-icons">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32"  height="32"  viewBox="0 0 32 32" fill="white">
+                <title>menu</title>
+                <path d="M29.181 19.070c-1.679-2.908-0.669-6.634 2.255-8.328l-3.145-5.447c-0.898 0.527-1.943 0.829-3.058 0.829-3.361 0-6.085-2.742-6.085-6.125h-6.289c0.008 1.044-0.252 2.103-0.811 3.070-1.679 2.908-5.411 3.897-8.339 2.211l-3.144 5.447c0.905 0.515 1.689 1.268 2.246 2.234 1.676 2.903 0.672 6.623-2.241 8.319l3.145 5.447c0.895-0.522 1.935-0.82 3.044-0.82 3.35 0 6.067 2.725 6.084 6.092h6.289c-0.003-1.034 0.259-2.080 0.811-3.038 1.676-2.903 5.399-3.894 8.325-2.219l3.145-5.447c-0.899-0.515-1.678-1.266-2.232-2.226zM16 22.479c-3.578 0-6.479-2.901-6.479-6.479s2.901-6.479 6.479-6.479c3.578 0 6.479 2.901 6.479 6.479s-2.901 6.479-6.479 6.479z"></path>
+                </svg>
+        </i></div>
+        
+        <div class="mdl-card__supporting-text">
+            
+            <div id="Titulo" class="text-color" style="text-align: center; width: calc(100% - 32px);font-family: Roboto,sans-serif; font-size: calc(100% + 1.5vw);font-weight: 600;color: rgb(0, 188, 212);">SMART HOME ESP01</div>
+        </div>
+        <span id="HoraLocal" class="text-color" style="position: absolute; right: 10px; top: 20px; font-family: Roboto,sans-serif; font-size: calc(100% + 0.5vw);font-weight: 300;color: rgb(0, 188, 212);">...</span>
+
+    </header>
+    <div class="mdl-layout__drawer">
+        <header>Opciones</header>
+        <div class="scroll__wrapper" id="scroll__wrapper">
+            <div class="scroller" id="scroller">
+                <div class="scroll__container" id="scroll__container">
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link" href="index.html">
+                            <i class="material-icons" role="presentation">Inicio</i>
+                        </a>
+                    
+                        <a class="mdl-navigation__link" href="Configuracion.html">
+                            <i class="material-icons">Configuración</i>
+                            
+                        </a>
+                        <a class="mdl-navigation__link mdl-navigation__link--current" href="Info.html">
+                            <i class="material-icons" role="presentation">Info</i>     
+                        </a>
+                        <div class="mdl-layout-spacer"></div>
+                    </nav>
+                </div>
+            </div>
+            <div class='scroller__bar' id="scroller__bar"></div>
+        </div>
+    </div>
+
+    <main class="mdl-layout__content">
+        <div class="mdl-grid ui-components">
+            <!--Toggles-->
+            <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Acerca de</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <h6 class="text-color--white">Página Web y Aplicación Android creada por el Ing. Arturo Javier Cárdenas Rivero. </h6>
+                            </li>
+                            <li class="mdl-list__item">
+                                <h6 class="text-color--white">Versión 1.9</h6>
+                            </li>
+                            <li class="mdl-list__item">
+                                <h6 class="text-color--white">2020</h6>
+                            </li>
+                        </ul>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+
+<!-- inject:js -->
+<script src="./js/Hora.js"></script>
+<script src="js/material.min.js"></script>
+<script src="./js/scroll.min.js"></script>
+<!-- endinject -->
+
+</body>
+</html>
+
+
+

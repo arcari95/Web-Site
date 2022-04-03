@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMART HOME ESP01</title>
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/application.min.css">
+    
+    <!-- endinject -->
+
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout  mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button" style="top: -5px;"><i class="material-icons">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32"  height="32"  viewBox="0 0 32 32" fill="white">
+                <title>menu</title>
+                <path d="M29.181 19.070c-1.679-2.908-0.669-6.634 2.255-8.328l-3.145-5.447c-0.898 0.527-1.943 0.829-3.058 0.829-3.361 0-6.085-2.742-6.085-6.125h-6.289c0.008 1.044-0.252 2.103-0.811 3.070-1.679 2.908-5.411 3.897-8.339 2.211l-3.144 5.447c0.905 0.515 1.689 1.268 2.246 2.234 1.676 2.903 0.672 6.623-2.241 8.319l3.145 5.447c0.895-0.522 1.935-0.82 3.044-0.82 3.35 0 6.067 2.725 6.084 6.092h6.289c-0.003-1.034 0.259-2.080 0.811-3.038 1.676-2.903 5.399-3.894 8.325-2.219l3.145-5.447c-0.899-0.515-1.678-1.266-2.232-2.226zM16 22.479c-3.578 0-6.479-2.901-6.479-6.479s2.901-6.479 6.479-6.479c3.578 0 6.479 2.901 6.479 6.479s-2.901 6.479-6.479 6.479z"></path>
+                </svg>
+        </i></div>
+        
+        <div class="mdl-card__supporting-text">
+            
+            <div id="Titulo" class="text-color" style="text-align: center; width: calc(100% - 32px);font-family: Roboto,sans-serif; font-size: calc(100% + 1.5vw);font-weight: 600;color: rgb(0, 188, 212);">SMART HOME ESP01</div>
+        </div>
+
+        <div class="mdl-layout__header-row" style="position: absolute; right: 0px; top: 2px;">
+
+            <button  id="more2" class="mdl-button mdl-js-button mdl-js-ripple-effect show-modal1" style="min-width: 1px; width: 36px; padding: 0 2px; right: 10px;">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="white">
+                    <title>refresh2</title>
+                    <path d="M23.5 18c0 4.418-3.582 8-8 8s-8-3.582-8-8c0-4.085 3.917-6.595 8-6.951v4.951l10-7v-1l-10-8v5.042c-7.347 0.432-14 5.561-14 12.958 0 7.732 6.268 14 14 14s14-6.268 14-14h-6z"></path>
+                    </svg>
+            </button>
+            <dialog id="dialog-one" class="mdl-dialog" style="background-color: #444; padding: 0px; width: 290px; height: 150px;">
+                <div class="mdl-card__title">
+                    <h5 class="mdl-card__title-text" id="modal1" style="text-align: center;" >¿Seguro que desea reiniciar el sistema?</h5>
+                </div>
+
+                <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                    <ul class="mdl-list pull-left">
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-light-blue close4" id="yes2" style="width: 110px;"
+                                onclick="ResetSys(this.dataset.id, this.checked)">
+                                <strong>Si</strong>
+                                </button>
+                            </li>
+                        </ul>
+    
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-red close3" id="No2" style="width: 110px;">
+                                    <strong>No</strong>
+                                </button>
+                            </li>
+                        </ul>
+                       
+                    </ul>
+                </div>
+            </dialog>
+
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect show-modal2" style="min-width: 1px; width: 36px; padding: 0 2px;">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"  width="32"  height="32"  viewBox="0 0 50 50" fill="white">
+                    <title>floppy</title>
+                    <path d="M21 33.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5zM4 0c-2.21 0-4 1.79-4 4v40c0 2.21 1.79 4 4 4h40c2.21 0 4-1.79 4-4l-0-34.080c0-1.34-0.529-2.53-1.38-3.39l-5.080-5.060c-0.899-0.91-2.16-1.47-3.54-1.47h-34zM7.2 5h2.8v7.8c0 1.22 0.98 2.2 2.2 2.2h2.6c1.22 0 2.2-0.98 2.2-2.2l-0-7.8h18.8c1.22 0 2.2 0.98 2.2 2.2v9.6c0 1.22-0.98 2.2-2.2 2.2h-28.6c-1.22 0-2.2-0.98-2.2-2.2v-9.6c0-1.22 0.98-2.2 2.2-2.2zM17 33.5c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5-6.5-2.91-6.5-6.5z"></path>
+                </svg>
+            </button>
+            <dialog id="dialog-two" class="mdl-dialog" style="background-color: #444; padding: 0px; width: 290px; height: 150px;">
+                <div class="mdl-card__title">
+                    <h5 class="mdl-card__title-text" id="modal2" style="text-align: center;" >¿Seguro que desea guardar la configuración actual?</h5>
+                </div>
+
+                <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                    <ul class="mdl-list pull-left">
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-light-blue close2" id="yes" style="width: 110px;"
+                                onclick="SaveConfig(this.dataset.id, this.checked)">
+                                <strong>Si</strong>
+                                </button>
+                            </li>
+                        </ul>
+    
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-red close" style="width: 110px;">
+                                    <strong>No</strong>
+                                </button>
+                            </li>
+                        </ul>
+                       
+                    </ul>
+                </div>
+            </dialog>
+        </div>
+
+    </header>
+    
+    <div class="mdl-layout__drawer">
+        <header>Opciones</header>
+        <div class="scroll__wrapper" id="scroll__wrapper">
+            <div class="scroller" id="scroller">
+                <div class="scroll__container" id="scroll__container">
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link" href="index.html">
+                            <i class="material-icons" role="presentation">Inicio</i>
+                        </a>
+                    
+                        <a class="mdl-navigation__link mdl-navigation__link--current" href="Configuracion.html">
+                            <i class="material-icons">Configuración</i>
+                            
+                        </a>
+                        <a class="mdl-navigation__link" href="Info.html">
+                            <i class="material-icons" role="presentation">Info</i>     
+                        </a>
+                        <div class="mdl-layout-spacer"></div>
+                    </nav>
+                </div>
+            </div>
+            <div class='scroller__bar' id="scroller__bar"></div>
+        </div>
+    </div>
+
+    <main class="mdl-layout__content">
+        <div class="mdl-grid dashboard">
+            <!--Toggles-->
+            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Unidades de Medición </h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <span class="text-color--gray">Temperatura</span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect radio--colored-green" for="radio-1">
+                                    <input type="radio" id="radio-1" data-id="1" class="mdl-radio__button" name="options" value="1"
+                                    onchange="sendUnit(this.dataset.id, this.checked)">
+                                    <span class="mdl-radio__label">ºC</span>
+                                </label>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect radio--colored-orange" for="radio-2">
+                                    <input type="radio" id="radio-2" data-id="2" class="mdl-radio__button" name="options" value="2" 
+                                    onchange="sendUnit(this.dataset.id, this.checked)">
+                                    <span class="mdl-radio__label">ºF</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone" >
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Sensor de Presencia</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <span class="text-color--gray">Estado</span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect switch--colored-red" for="switch-5" style="width: 25%;">
+                                    <input type="checkbox" id="switch-5" data-id="5" class="mdl-switch__input"
+                                    onchange="setPIR(this.dataset.id, this.checked)">
+                                    <span class="mdl-switch__label">OFF/ON</span>
+                                </label>
+                                
+                            </li>
+                            <li class="mdl-list__item">
+                                <span class="text-color--gray">Retardo de Apagado</span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <input class="mdl-slider mdl-js-slider slider--colored-red" id="slider-5" data-id="5" style="width: 250px;" type="range" min="0" max="10" value="0"  disabled
+                                onchange="setPIRvalue(this.dataset.id, this.value);">
+                                <label id="slider-text-5" data-id="5" >0</label> 
+                            </li>      
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Actualización vía OTA</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <ul class="mdl-list pull-left">
+                            <li class="mdl-list__item">
+                                <span class="text-color--gray">Estado</span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect switch--colored-blue" for="switch-6">
+                                    <input type="checkbox" id="switch-6" data-id="6" class="mdl-switch__input"
+                                    onchange="setOTA(this.dataset.id, this.checked)">
+                                    <span class="mdl-switch__label">OFF/ON</span>
+                                </label>
+                            </li>    
+                        </ul>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h5 class="mdl-card__title-text text-color--white">Parámetros WI-FI</h5>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <form class="form form--basic">
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone form__article">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select full-size" id="test">
+                                        <input class="mdl-textfield__input" type="text" id="workmode" readonly tabIndex="-1"/>
+
+                                        <label class="mdl-textfield__label" for="workmode">Modo de Trabajo</label>
+
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu dark_dropdown" for="workmode">
+                                            <li class="mdl-menu__item" data-val="uno">Punto de Acceso (AP)</li>
+                                            <li class="mdl-menu__item" data-val="dos">Modo Estación (STA)</li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
+                                        <input class="mdl-textfield__input" type="text"  id="profile-floating-name" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$">
+                                        <label class="mdl-textfield__label" for="profile-floating-name">Dirección IP</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
+                                        <input class="mdl-textfield__input" type="text"  id="profile-floating-first-name">
+                                        <label class="mdl-textfield__label" for="profile-floating-first-name">Nombre (SSID)</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
+
+                                        <input class="mdl-textfield__input" type="password"  pattern="(?=^.{8,12}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" id="profile-floating-last-name">
+                                        <label class="mdl-textfield__label" for="profile-floating-last-name">Contraseña (Password)</label>
+                                        <li class="mdl-textfield__error" for="profile-floating-last-name" >
+                                            <div class="mdl-card mdl-shadow--4dp" style="font-size: 12px; text-align: center; background-color:dimgray;">
+                                                La contraseña debe contener al menos una letra Mayúscula, una letra Minúscula, un Número, un Caracter Especial, 
+                                                Mínimo 8 caracteres y Máximo 15 caracteres.
+                                            </div>
+                                        </li>
+                                    </div>                                               
+                                </div>
+                            </div>
+                        </form>
+
+                        <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="see" style="top: -50px; left: 77%; display: block;"
+                            onclick="viewPassword(this.dataset.id, this.checked)">
+                            <svg id="test3" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="white">
+                                <title>eye</title>
+                                <path d="M16 6c-6.979 0-13.028 4.064-16 10 2.972 5.936 9.021 10 16 10s13.027-4.064 16-10c-2.972-5.936-9.021-10-16-10zM23.889 11.303c1.88 1.199 3.473 2.805 4.67 4.697-1.197 1.891-2.79 3.498-4.67 4.697-2.362 1.507-5.090 2.303-7.889 2.303s-5.527-0.796-7.889-2.303c-1.88-1.199-3.473-2.805-4.67-4.697 1.197-1.891 2.79-3.498 4.67-4.697 0.122-0.078 0.246-0.154 0.371-0.228-0.311 0.854-0.482 1.776-0.482 2.737 0 4.418 3.582 8 8 8s8-3.582 8-8c0-0.962-0.17-1.883-0.482-2.737 0.124 0.074 0.248 0.15 0.371 0.228v0zM16 13c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"></path>
+                            </svg>
+                        </button>
+
+                        <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="see2" style="top: -50px; left: 77%; display: none;" 
+                           onclick="viewPassword(this.dataset.id, this.checked)">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="white">
+                                <title>eye-blocked</title>
+                                <path d="M29.561 0.439c-0.586-0.586-1.535-0.586-2.121 0l-6.318 6.318c-1.623-0.492-3.342-0.757-5.122-0.757-6.979 0-13.028 4.064-16 10 1.285 2.566 3.145 4.782 5.407 6.472l-4.968 4.968c-0.586 0.586-0.586 1.535 0 2.121 0.293 0.293 0.677 0.439 1.061 0.439s0.768-0.146 1.061-0.439l27-27c0.586-0.586 0.586-1.536 0-2.121zM13 10c1.32 0 2.44 0.853 2.841 2.037l-3.804 3.804c-1.184-0.401-2.037-1.521-2.037-2.841 0-1.657 1.343-3 3-3zM3.441 16c1.197-1.891 2.79-3.498 4.67-4.697 0.122-0.078 0.246-0.154 0.371-0.228-0.311 0.854-0.482 1.776-0.482 2.737 0 1.715 0.54 3.304 1.459 4.607l-1.904 1.904c-1.639-1.151-3.038-2.621-4.114-4.323z"></path>
+                                <path d="M24 13.813c0-0.849-0.133-1.667-0.378-2.434l-10.056 10.056c0.768 0.245 1.586 0.378 2.435 0.378 4.418 0 8-3.582 8-8z"></path>
+                                <path d="M25.938 9.062l-2.168 2.168c0.040 0.025 0.079 0.049 0.118 0.074 1.88 1.199 3.473 2.805 4.67 4.697-1.197 1.891-2.79 3.498-4.67 4.697-2.362 1.507-5.090 2.303-7.889 2.303-1.208 0-2.403-0.149-3.561-0.439l-2.403 2.403c1.866 0.671 3.873 1.036 5.964 1.036 6.978 0 13.027-4.064 16-10-1.407-2.81-3.504-5.2-6.062-6.938z"></path>
+                            </svg>
+       
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<!-- inject:js -->
+<script src="./js/Config.js"></script>
+<script src="js/getmdl-select.min.js"></script>
+<script src="js/material.min.js"></script>
+<script src="./js/scroll.min.js"></script>
+<!-- endinject -->
+
+</body>
+</html>
+
+
+
